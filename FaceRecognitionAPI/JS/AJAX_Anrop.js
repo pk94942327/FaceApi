@@ -21,8 +21,8 @@ callFace.addEventListener(
     xhr.timeout = 2000;
 
     xhr.onload = function () {
-                                var face = JSON.parse(xhr.responseText);
-                                outputText.innerHTML = face[0];
+                                var face = xhr.responseText;
+                                outputText.innerHTML = face;
                              };
 
     xhr.ontimeout = function (e) { outputTemp.innerHTML = "Time exceded 2 seconds. Försök igen."; }
