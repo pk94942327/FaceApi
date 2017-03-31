@@ -15,7 +15,7 @@ callFace.addEventListener(
         return false;
     }
 
-    xhr.open('GET', '/api/FaceApi');
+    xhr.open('GET', '/api/FaceNewApi');
     xhr.send(null);
 
     xhr.timeout = 2000;
