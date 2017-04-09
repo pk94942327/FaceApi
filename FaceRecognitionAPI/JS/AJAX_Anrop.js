@@ -11,13 +11,14 @@ callFace.addEventListener(
     {
         outputText.innerHTML = "";
         var xhr = new XMLHttpRequest(); //Se fördjupad dokumentation för detta AJAX eller snarare ett AJAJ anrop anrop, https://msdn.microsoft.com/en-us/library/ms535874(v=vs.85).aspx
-        // Se också grundläggande förklaring om XMLHTTPRequest() https://www.w3schools.com/xml/ajax_xmlhttprequest_create.asp
+                                        // Se också grundläggande förklaring om XMLHTTPRequest() https://www.w3schools.com/xml/ajax_xmlhttprequest_create.asp
         if (!xhr) {
-            alert('Giving up :( Cannot create an XMLHTTP instance');
-            return false;
-        }
+                        alert('Giving up :( Cannot create an XMLHTTP instance');
+                        return false;
+                  }
 
-        xhr.open('GET', '/api/FaceNewApi'); /*
+        //xhr.open('GET', '/api/FaceNewApi');
+                                            /*
 						                        open(method,url,async,user,psw)	Specifies the request
 
 						                        method: the request type GET or POST
@@ -26,6 +27,7 @@ callFace.addEventListener(
 						                        user: optional user name
 						                        psw: optional password
 				                            */
+        xhr.open('POST', '/api/FaceNewApi');
         xhr.send(null); /*
                             send()	Sends the request to the server. Used for GET requests
                             send(string)	Sends the request to the server. Used for POST requests
@@ -34,16 +36,17 @@ callFace.addEventListener(
         xhr.timeout = 2000;
 
         xhr.onload = function () {
-            var face = JSON.parse(xhr.responseText);//responseText -> Returns the response data as a string
-                                                    //responseXML -> Returns the response data as XML data
-            for (var i = 0; i < face.length; i++) { outputText.innerHTML += face[i]; }
+                                    var face = JSON.parse(xhr.responseText);//responseText -> Returns the response data as a string
+                                                                            //responseXML -> Returns the response data as XML data
+                                                                            //JSON.parse(...) Convert responseText to JSON format.
+                                    for (var i = 0; i < face.length; i++) { outputText.innerHTML += face[i]; }
 
-            //xhr.onload = function () {
-            //    var face = xhr.responseText;
-            //    outputText.innerHTML = face;
-            //};
-
-            xhr.ontimeout = function (e) { outputTemp.innerHTML = "Time exceded 2 seconds. Försök igen."; }
-        }
+                                    //xhr.onload = function () {
+                                    //    var face = xhr.responseText;
+                                    //    outputText.innerHTML = face;
+                                    //};
+                                    //console.log(face); Kollar bara vad som kommer ut ur face.
+                                    xhr.ontimeout = function (e) { outputTemp.innerHTML = "Time exceded 2 seconds. Försök igen."; }
+                                }
 
     });
