@@ -1,14 +1,25 @@
-﻿
-var callFace = document.getElementById("callFace");
-var outputText = document.getElementById("resultatText");
+﻿// Knapparna till val av ansiktsbild
+var callFace1 = document.getElementById("callFace1"); // Picture1 knappen
+var callFace2 = document.getElementById("callFace2"); // Picture2 knappen
+var callFace3 = document.getElementById("callFace3"); // Picture3 knappen
+var callFace4 = document.getElementById("callFace4"); // Picture4 knappen
+var callFace5 = document.getElementById("callFace5"); // Picture5 knappen
+var callFace6 = document.getElementById("callFace6"); // Dog knappen
+var submitPicture = document.getElementsByName("submitPicture");
 
+var inputImgUrl = document.getElementById("imageUrl");
+var outputImg = document.getElementById("Picture");
+var getFaceDataButton = document.getElementById("faceUrl");
 
-callFace.addEventListener(
+submitPicture.addEventListener("click", function () { outputImg.src = inputImgUrl.value });
+
+getFaceDataButton.addEventListener(
 
     "click",    // Argument 1 till metoden/händelsen addEventListner, object.addEventListener( Arggument1, Argument2);
 
     function () // Argument 2 till metoden/händelsen addEventListner, function(){...}
     {
+        outputImg.src = inputImgUrl.value;
         outputText.innerHTML = "";
         var xhr = new XMLHttpRequest(); //Se fördjupad dokumentation för detta AJAX eller snarare ett AJAJ anrop anrop, https://msdn.microsoft.com/en-us/library/ms535874(v=vs.85).aspx
                                         // Se också grundläggande förklaring om XMLHTTPRequest() https://www.w3schools.com/xml/ajax_xmlhttprequest_create.asp
