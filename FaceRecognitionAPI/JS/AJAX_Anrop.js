@@ -5,11 +5,11 @@ var callFace3 = document.getElementById("callFace3"); // Picture3 knappen
 var callFace4 = document.getElementById("callFace4"); // Picture4 knappen
 var callFace5 = document.getElementById("callFace5"); // Picture5 knappen
 var callFace6 = document.getElementById("callFace6"); // Dog knappen
-var submitPicture = document.getElementsByName("submitPicture");
+var submitPicture = document.getElementsByName("submitPicture"); //Alla bild-knapparna har gets namnet submitPicture för att kunna användas till händelsen klicka på en bild-knapp.
 
-var inputImgUrl = document.getElementById("imageUrl");
-var outputImg = document.getElementById("Picture");
-var getFaceDataButton = document.getElementById("faceUrl");
+var inputImgUrl = document.getElementById("imageUrl"); // Inmatningsfältet för URL där länken till ansikten skrivs in har id = "imageUrl".
+var outputImg = document.getElementById("Picture"); // Jag vill komma åt fältet < img id = "Picture" src="" /> på Index.cshtml för att 'dynamiskt' fylla i src="" beroende på vad användaren skriver in i URL-inmatningsfältet.
+var getFaceDataButton = document.getElementById("faceUrl"); // När användaren trycker på [Get Face Data :-)] knappen med id = "faceUrl" ska funktionen med AJAX anropas.
 
 submitPicture.addEventListener("click", function () { outputImg.src = inputImgUrl.value });
 
