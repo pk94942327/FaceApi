@@ -31,7 +31,7 @@ namespace FaceRecognitionAPI.FaceApi
         }
 
         // POST: api/FaceNewApi
-        public async Task<Microsoft.ProjectOxford.Face.Contract.Face[]> Post(string urlFace) // Är Face[] en returtyp av två dimensionella matriser med ansikten?
+        public async Task<Microsoft.ProjectOxford.Face.Contract.Face[]> Post(string URL) // Är Face[] en returtyp av två dimensionella matriser med ansikten?
         {
             faceServiceClient = new FaceServiceClient("3455a13fefb347f6aebff7162aa7a005");
             var requiredFaceAttributes = new FaceAttributeType[] {  // Varför finns vare sig id eller attributes medtagen som de gör i foreach (var face in faces)?
@@ -42,7 +42,7 @@ namespace FaceRecognitionAPI.FaceApi
                 FaceAttributeType.HeadPose,
                 FaceAttributeType.Glasses
             };
-            string imageUrl = urlFace;
+            string imageUrl = URL;
             var faces = await faceServiceClient.DetectAsync(imageUrl,
                 returnFaceLandmarks: true,                      // Varför är det inte returnFaceLandmark = true?
                 returnFaceAttributes: requiredFaceAttributes);  // Returneras värdena från Microsoft api.projectoxford.com till instansen requiredFaceAttributes?

@@ -45,7 +45,8 @@ getFaceDataButton.addEventListener(
 						                        psw: optional password
 				                            */
         xhr.open('POST', '/api/FaceNewApi');
-        xhr.send(null); /*
+        URL = inputImgUrl;
+        xhr.send(URL); /*
                             send()	Sends the request to the server. Used for GET requests
                             send(string)	Sends the request to the server. Used for POST requests
                         */
@@ -56,8 +57,7 @@ getFaceDataButton.addEventListener(
                                     var face = JSON.parse(xhr.responseText);//responseText -> Returns the response data as a string
                                                                             //responseXML -> Returns the response data as XML data
                                                                             //JSON.parse(...) Convert responseText to JSON format.
-                                    for (var i = 0; i < face.length; i++) { outputText.innerHTML += face[i]; }
-
+                                    
                                     //xhr.onload = function () {
                                     //    var face = xhr.responseText;
                                     //    outputText.innerHTML = face;
