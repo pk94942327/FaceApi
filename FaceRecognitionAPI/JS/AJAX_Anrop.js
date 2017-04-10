@@ -11,15 +11,21 @@ var inputImgUrl = document.getElementById("imageUrl"); // Inmatningsfältet för
 var outputImg = document.getElementById("Picture"); // Jag vill komma åt fältet < img id = "Picture" src="" /> på Index.cshtml för att 'dynamiskt' fylla i src="" beroende på vad användaren skriver in i URL-inmatningsfältet.
 var getFaceDataButton = document.getElementById("faceUrl"); // När användaren trycker på [Get Face Data :-)] knappen med id = "faceUrl" ska funktionen med AJAX anropas.
 
-submitPicture.addEventListener("click", function () { outputImg.src = inputImgUrl.value });
+callFace1.addEventListener("click", function () { outputImg.src = callFace1.name });
+callFace2.addEventListener("click", function () { outputImg.src = callFace2.name });
+callFace3.addEventListener("click", function () { outputImg.src = callFace3.name });
+callFace4.addEventListener("click", function () { outputImg.src = callFace4.name });
+callFace5.addEventListener("click", function () { outputImg.src = callFace5.name });
+callFace6.addEventListener("click", function () { outputImg.src = callFace6.name });
 
 getFaceDataButton.addEventListener(
 
     "click",    // Argument 1 till metoden/händelsen addEventListner, object.addEventListener( Arggument1, Argument2);
 
-    function () // Argument 2 till metoden/händelsen addEventListner, function(){...}
+    function() // Argument 2 till metoden/händelsen addEventListner, function(){...}
     {
-        outputImg.src = inputImgUrl.value;
+        outputImg.src = inputImgUrl.value; // Tilldela innehållet src="" som är en URL till bilden i < img id = "Picture" src="" /> så att det står src="https://www.imageToFace.jpg" istället för null strängen "".
+                                           // Förhoppningsvis ska bilden visas.
         outputText.innerHTML = "";
         var xhr = new XMLHttpRequest(); //Se fördjupad dokumentation för detta AJAX eller snarare ett AJAJ anrop anrop, https://msdn.microsoft.com/en-us/library/ms535874(v=vs.85).aspx
                                         // Se också grundläggande förklaring om XMLHTTPRequest() https://www.w3schools.com/xml/ajax_xmlhttprequest_create.asp
