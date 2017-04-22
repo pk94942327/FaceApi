@@ -49,6 +49,7 @@ getFaceDataButton.addEventListener(
         xhr.send(URL); /*
                             send()	Sends the request to the server. Used for GET requests
                             send(string)	Sends the request to the server. Used for POST requests
+                            Intellisence säger att URL är en "(global variable)Element URL".
                         */
 
         xhr.timeout = 2000;
