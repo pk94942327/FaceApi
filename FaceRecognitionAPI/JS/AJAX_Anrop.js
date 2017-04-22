@@ -54,7 +54,7 @@ function accessImgData(callFace) {
             user: optional user name
             psw: optional password
         */
-        xhr.open('POST', '/api/FaceNewApi');
+        xhr.open("Post", "/api/FaceNewApi");
         xhr.send(URL); /*   Se kodraden URL = callFace;
                             send()	Sends the request to the server. Used for GET requests
                             send(string)	Sends the request to the server. Used for POST requests
