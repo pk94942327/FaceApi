@@ -29,9 +29,10 @@ namespace FaceRecognitionAPI.FaceApi
         {
             return "value";
         }
-
+        [HttpPost]
+        [Route("api/FaceNewApi")]
         // POST: api/FaceNewApi
-        public async Task<Microsoft.ProjectOxford.Face.Contract.Face[]> Post(string URL) // Är Face[] en returtyp av två dimensionella matriser med ansikten?
+        public async Task<Microsoft.ProjectOxford.Face.Contract.Face[]> Post([FromBody] string URL) // Är Face[] en returtyp av två dimensionella matriser med ansikten?
         {
             faceServiceClient = new FaceServiceClient("3455a13fefb347f6aebff7162aa7a005");
             var requiredFaceAttributes = new FaceAttributeType[] {  // Varför finns vare sig id eller attributes medtagen som de gör i foreach (var face in faces)?
