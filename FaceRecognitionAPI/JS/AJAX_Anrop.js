@@ -54,7 +54,7 @@ function accessImgData(callFace) {
     */
         xhr.open('Post', '/api/FaceNewApi');
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhr.send("URL=callFace");
+        xhr.send("URL="+callFace);
     /*   Se kodraden URL = callFace;
          send()	Sends the request to the server. Used for GET requests
          send(string)	Sends the request to the server. Used for POST requests
@@ -77,4 +77,3 @@ function accessImgData(callFace) {
         }
         return xhr.onload;
     }
-
