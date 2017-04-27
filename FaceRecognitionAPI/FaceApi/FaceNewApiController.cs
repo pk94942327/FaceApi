@@ -16,23 +16,10 @@ namespace FaceRecognitionAPI.FaceApi
     public class FaceNewApiController : ApiController
     {
         private FaceServiceClient faceServiceClient;
-
-        // GET: api/FaceNewApi
-        //[Route("myroute")]
-        public string Get()
-        {
-            return "Hello World";
-        }
-
-        // GET: api/FaceNewApi/5
-        public string Get(int id)
-        {
-            return "value";
-        }
-        [HttpPost]
+        [HttpGet]
         [Route("api/FaceNewApi")]
         // POST: api/FaceNewApi
-        public async Task<Microsoft.ProjectOxford.Face.Contract.Face[]> Post([FromBody] string URL) // Är Face[] en returtyp av två dimensionella matriser med ansikten?
+        public async Task<Microsoft.ProjectOxford.Face.Contract.Face[]> Post(string URL) // Är Face[] en returtyp av två dimensionella matriser med ansikten?
         {
             faceServiceClient = new FaceServiceClient("3455a13fefb347f6aebff7162aa7a005");
             var requiredFaceAttributes = new FaceAttributeType[] {  // Varför finns vare sig id eller attributes medtagen som de gör i foreach (var face in faces)?
@@ -60,16 +47,6 @@ namespace FaceRecognitionAPI.FaceApi
                 var glasses = attributes.Glasses;
             }
             return faces;
-        }
-
-        // PUT: api/FaceNewApi/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE: api/FaceNewApi/5
-        public void Delete(int id)
-        {
         }
     }
 }

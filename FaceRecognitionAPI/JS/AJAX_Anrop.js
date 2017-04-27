@@ -34,6 +34,8 @@ getFaceDataButton.addEventListener(
 */
 
 function accessImgData(callFace) {
+    URL = callFace;
+
     var xhr = new XMLHttpRequest();
     //Se fördjupad dokumentation för detta AJAX eller snarare ett AJAJ anrop anrop, https://msdn.microsoft.com/en-us/library/ms535874(v=vs.85).aspx
     // Se också grundläggande förklaring om XMLHTTPRequest() https://www.w3schools.com/xml/ajax_xmlhttprequest_create.asp
@@ -52,15 +54,21 @@ function accessImgData(callFace) {
             user: optional user name
             psw: optional password
     */
-        xhr.open('Post', '/api/FaceNewApi');
-        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhr.send("URL="+callFace);
+        xhr.open('Get', '/api/FaceNewApi/?URL='+callFace,true);
+        xhr.setRequestHeader("Content-type", "application/json");
+        xhr.onreadystatechange = function () {//Call a function when the state changes.
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                alert(xhr.responseText);
+            }
+        }
+        xhr.send();
+
     /*   Se kodraden URL = callFace;
          send()	Sends the request to the server. Used for GET requests
          send(string)	Sends the request to the server. Used for POST requests
          Intellisence säger att URL är en "(global variable)Element URL".
     */
-        xhr.timeout = 2000;
+        //xhr.timeout = 2000;
 
         xhr.onload = function () {
             var face = JSON.parse(xhr.responseText);
