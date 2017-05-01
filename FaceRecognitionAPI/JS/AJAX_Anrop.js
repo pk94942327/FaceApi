@@ -6,6 +6,7 @@ var callFace4 = document.getElementById("callFace4"); // Picture4 knappen
 var callFace5 = document.getElementById("callFace5"); // Picture5 knappen
 var callFace6 = document.getElementById("callFace6"); // Dog knappen
 var callFace7 = document.getElementById("callFace7"); // URL fältet läses in.
+var test = document.getElementById("Test");
 
 var submitPicture = document.getElementsByName("submitPicture"); //Alla bild-knapparna har gets namnet submitPicture för att kunna användas till händelsen klicka på en bild-knapp.
 
@@ -27,7 +28,8 @@ function accessImgData(callFace) {
     var img = new Image();
     img.src = callFace;
     img.onload = function () {
-        ctx.drawImage(img, 10,10, 360, 280)
+        ctx.drawImage(img, 10, 10, 360, 280);
+
     };
 
     var xhr = new XMLHttpRequest();
@@ -35,14 +37,26 @@ function accessImgData(callFace) {
     xhr.setRequestHeader("Content-type", "application/json");
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
-            var response = xhr.responseText;
-            alert("Eye left coord: " + response)
+            var response = xhr.responseText.split(",");
+            alert(response);
+            ctx.drawImage(img, 10, 10, 360, 280);
+            var x =parseInt(response[1])*(360/594);
+            var y = parseInt(response[2]) * (280 / 396);
+            test.innerHTML = x + "<->" + y;
+            ctx.beginPath();
+            ctx.arc(x, y, 2, 0, 2 * Math.PI);
+            ctx.strokeStyle = "yellow";
+            ctx.fillStyle = "yellow";
+            ctx.fill();
+            ctx.stroke();
+          
         }
     }
     xhr.send();
+
 }
 /*
     Se fördjupad dokumentation för detta AJAX eller snarare ett AJAJ anrop anrop, https://msdn.microsoft.com/en-us/library/ms535874(v=vs.85).aspx
     Se också grundläggande förklaring om XMLHTTPRequest() https://www.w3schools.com/xml/ajax_xmlhttprequest_create.asp
-
+    Se var img = new Image() från http://www.i-programmer.info/programming/graphics-and-imaging/2078-canvas-bitmap-operations-bitblt-in-javascript.html
 */

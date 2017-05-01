@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Mvc;
 
 //TODO: Steg 1 gör knapp
 //TODO: Steg 2 klicka på knappen allert "hej"
@@ -16,8 +17,8 @@ namespace FaceRecognitionAPI.FaceApi
     public class FaceNewApiController : ApiController
     {
         private FaceServiceClient faceServiceClient;
-        [HttpGet]
-        [Route("api/FaceNewApi")]
+        [System.Web.Mvc.HttpGet]
+        [System.Web.Http.Route("api/FaceNewApi")]
         public async Task<string> GetFaceData(string URL) //Funktionsnamnet har ingen betydelse. Det avgörande är [HttpGet].
         {
             FaceServiceClient client = new FaceServiceClient("3455a13fefb347f6aebff7162aa7a005");
@@ -28,8 +29,12 @@ namespace FaceRecognitionAPI.FaceApi
 
             int eyeLeftX = (int)firstFace.FaceLandmarks.EyeLeftInner.X;
             int eyeLeftY = (int)firstFace.FaceLandmarks.EyeLeftInner.Y;
-
-            return $"{eyeLeftX},{eyeLeftY}";
+            //int faceRectW = (int)firstFace.FaceLandmarks.EyeLeftInner.Y;
+            //int faceRectH = (int)firstFace.FaceLandmarks.EyeLeftInner.Y;
+            return $"{"12"},{eyeLeftX},{eyeLeftY}";
         }
     }
 }
+
+  
+
