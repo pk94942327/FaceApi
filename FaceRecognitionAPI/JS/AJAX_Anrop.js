@@ -25,12 +25,10 @@ function accessImgData(callFace) {
     var c = document.getElementById("resultImage")
     var ctx = c.getContext("2d");
     var img = new Image();
-
+    img.src = callFace;
     img.onload = function () {
-        var k = img.height / img.width;
         ctx.drawImage(img, 10,10, 360, 280)
     };
-    img.src = callFace;
 
     var xhr = new XMLHttpRequest();
     xhr.open('Get', '/api/FaceNewApi/?URL=' + callFace, true);
