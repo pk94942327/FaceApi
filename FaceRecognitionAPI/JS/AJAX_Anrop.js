@@ -40,79 +40,9 @@ function accessImgData(callFace) {
         }
     }
     xhr.send();
-
-
-
 }
-
 /*
+    Se fördjupad dokumentation för detta AJAX eller snarare ett AJAJ anrop anrop, https://msdn.microsoft.com/en-us/library/ms535874(v=vs.85).aspx
+    Se också grundläggande förklaring om XMLHTTPRequest() https://www.w3schools.com/xml/ajax_xmlhttprequest_create.asp
 
-/*
-getFaceDataButton.addEventListener(
-    "click",    // Argument 1 till metoden/händelsen addEventListner, object.addEventListener( Arggument1, Argument2);
-
-    function () // Argument 2 till metoden/händelsen addEventListner, function(){...}
-    {
-        outputImg.src = inputImgUrl.value; // Tilldela innehållet src="" som är en URL till bilden i < img id = "Picture" src="" /> så att det står src="https://www.imageToFace.jpg" istället för null strängen "".
-        // Förhoppningsvis ska bilden visas.
-        accessImgData(inputImgUrl.value); // Hämta data från AI tjänsten api.oxfordproject.com
-    });
 */
-/*
-function accessImgData(callFace) {
-    URL = callFace;
-    */
-/*
-    var xhr = new XMLHttpRequest();
-    //Se fördjupad dokumentation för detta AJAX eller snarare ett AJAJ anrop anrop, https://msdn.microsoft.com/en-us/library/ms535874(v=vs.85).aspx
-    // Se också grundläggande förklaring om XMLHTTPRequest() https://www.w3schools.com/xml/ajax_xmlhttprequest_create.asp
-        if (!xhr) {
-            alert('Giving up :( Cannot create an XMLHTTP instance');
-            return false;
-        }
-    /*
-            //xhr.open('GET', '/api/FaceNewApi');
-      
-            open(method,url,async,user,psw)	Specifies the request
-
-            method: the request type GET or POST
-            url: the file location
-            async: true (asynchronous) or false (synchronous)
-            user: optional user name
-            psw: optional password
-    */
-    /*
-        xhr.open('Get', '/api/FaceNewApi/?URL='+callFace,true);
-        xhr.setRequestHeader("Content-type", "application/json");
-        xhr.onreadystatechange = function () {//Call a function when the state changes.
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                alert(xhr.responseText);
-            }
-        }
-        xhr.send();
-*/
-    /*   Se kodraden URL = callFace;
-         send()	Sends the request to the server. Used for GET requests
-         send(string)	Sends the request to the server. Used for POST requests
-         Intellisence säger att URL är en "(global variable)Element URL".
-    */
-        //xhr.timeout = 2000;
-
-
-
-    /*
-        xhr.onload = function () {
-            var face = JSON.parse(xhr.responseText);
-    /*
-            responseText -> Returns the response data as a string
-            responseXML -> Returns the response data as XML data
-            JSON.parse(...) Convert responseText to JSON format.       
-            xhr.onload = function () { var face = xhr.responseText; outputText.innerHTML = face; };
-            console.log(face); 
-            Kollar bara vad som kommer ut ur face.
-    */
- /*           xhr.ontimeout = function (e) { outputTemp.innerHTML = "Time exceded 2 seconds. Försök igen."; }
-            return face;
-        }
-        return xhr.onload;
-}*/
