@@ -13,13 +13,50 @@ var inputImgUrl = document.getElementById("imageUrl"); // Inmatningsfältet för
 var outputImg = document.getElementById("Picture"); // Jag vill komma åt fältet < img id = "Picture" src="" /> på Index.cshtml för att 'dynamiskt' fylla i src="" beroende på vad användaren skriver in i URL-inmatningsfältet.
 var getFaceDataButton = document.getElementById("faceUrl"); // När användaren trycker på [Get Face Data :-)] knappen med id = "faceUrl" ska funktionen med AJAX anropas.
 
-callFace1.addEventListener("click", function () { outputImg.src = callFace1.name; var face1 = accessImgData(callFace1.name) });
-callFace2.addEventListener("click", function () { outputImg.src = callFace2.name; var face2 = accessImgData(callFace2.name) });
-callFace3.addEventListener("click", function () { outputImg.src = callFace3.name; var face3 = accessImgData(callFace3.name) });
-callFace4.addEventListener("click", function () { outputImg.src = callFace4.name; var face4 = accessImgData(callFace4.name) });
-callFace5.addEventListener("click", function () { outputImg.src = callFace5.name; var face5 = accessImgData(callFace5.name) });
-callFace6.addEventListener("click", function () { outputImg.src = callFace6.name; var face6 = accessImgData(callFace6.name) });
-callFace7.addEventListener("click", function () { outputImg.src = inputImgUrl.value; var face7 = accessImgData(inputImgUrl.value) });
+//callFace1.addEventListener("click", function () { outputImg.src = callFace1.name; var face1 = accessImgData(callFace1.name) });
+//callFace2.addEventListener("click", function () { outputImg.src = callFace2.name; var face2 = accessImgData(callFace2.name) });
+//callFace3.addEventListener("click", function () { outputImg.src = callFace3.name; var face3 = accessImgData(callFace3.name) });
+//callFace4.addEventListener("click", function () { outputImg.src = callFace4.name; var face4 = accessImgData(callFace4.name) });
+//callFace5.addEventListener("click", function () { outputImg.src = callFace5.name; var face5 = accessImgData(callFace5.name) });
+//callFace6.addEventListener("click", function () { outputImg.src = callFace6.name; var face6 = accessImgData(callFace6.name) });
+//callFace7.addEventListener("click", function () { outputImg.src = inputImgUrl.value; var face7 = accessImgData(inputImgUrl.value) });
+
+callFace1.addEventListener("click", function () { var face1 = accessImgData(callFace1.name) });
+callFace2.addEventListener("click", function () { var face2 = accessImgData(callFace2.name) });
+callFace3.addEventListener("click", function () { var face3 = accessImgData(callFace3.name) });
+callFace4.addEventListener("click", function () { var face4 = accessImgData(callFace4.name) });
+callFace5.addEventListener("click", function () { var face5 = accessImgData(callFace5.name) });
+callFace6.addEventListener("click", function () { var face6 = accessImgData(callFace6.name) });
+callFace7.addEventListener("click", function () { var face7 = accessImgData(inputImgUrl.value) });
+
+
+function accessImgData(callFace) {
+    var c = document.getElementById("resultImage")
+    var ctx = c.getContext("2d");
+    var img = new Image();
+
+    img.onload = function () {
+        var k = img.height / img.width;
+        ctx.drawImage(img, 10,10, 360, 280)
+    };
+    img.src = callFace;
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('Get', '/api/FaceNewApi/?URL=' + callFace, true);
+    xhr.setRequestHeader("Content-type", "application/json");
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            var response = xhr.responseText;
+            alert("Eye left coord: " + response)
+        }
+    }
+    xhr.send();
+
+
+
+}
+
+/*
 
 /*
 getFaceDataButton.addEventListener(
@@ -32,10 +69,11 @@ getFaceDataButton.addEventListener(
         accessImgData(inputImgUrl.value); // Hämta data från AI tjänsten api.oxfordproject.com
     });
 */
-
+/*
 function accessImgData(callFace) {
     URL = callFace;
-
+    */
+/*
     var xhr = new XMLHttpRequest();
     //Se fördjupad dokumentation för detta AJAX eller snarare ett AJAJ anrop anrop, https://msdn.microsoft.com/en-us/library/ms535874(v=vs.85).aspx
     // Se också grundläggande förklaring om XMLHTTPRequest() https://www.w3schools.com/xml/ajax_xmlhttprequest_create.asp
@@ -54,6 +92,7 @@ function accessImgData(callFace) {
             user: optional user name
             psw: optional password
     */
+    /*
         xhr.open('Get', '/api/FaceNewApi/?URL='+callFace,true);
         xhr.setRequestHeader("Content-type", "application/json");
         xhr.onreadystatechange = function () {//Call a function when the state changes.
@@ -62,7 +101,7 @@ function accessImgData(callFace) {
             }
         }
         xhr.send();
-
+*/
     /*   Se kodraden URL = callFace;
          send()	Sends the request to the server. Used for GET requests
          send(string)	Sends the request to the server. Used for POST requests
@@ -70,6 +109,9 @@ function accessImgData(callFace) {
     */
         //xhr.timeout = 2000;
 
+
+
+    /*
         xhr.onload = function () {
             var face = JSON.parse(xhr.responseText);
     /*
@@ -80,8 +122,8 @@ function accessImgData(callFace) {
             console.log(face); 
             Kollar bara vad som kommer ut ur face.
     */
-            xhr.ontimeout = function (e) { outputTemp.innerHTML = "Time exceded 2 seconds. Försök igen."; }
+ /*           xhr.ontimeout = function (e) { outputTemp.innerHTML = "Time exceded 2 seconds. Försök igen."; }
             return face;
         }
         return xhr.onload;
-    }
+}*/

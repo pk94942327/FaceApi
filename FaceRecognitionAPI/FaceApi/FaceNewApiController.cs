@@ -16,36 +16,20 @@ namespace FaceRecognitionAPI.FaceApi
     public class FaceNewApiController : ApiController
     {
         private FaceServiceClient faceServiceClient;
-        [HttpGet] // Det är denna taggen som avgör vilket verb jag valt.
+        [HttpGet]
         [Route("api/FaceNewApi")]
-        public async Task<Microsoft.ProjectOxford.Face.Contract.Face[]> Post(string URL) // Är Face[] en returtyp av två dimensionella matriser med ansikten? Vad funktionen heter har ingen betydelse.
+        public async Task<string> GetFaceData(string URL) //Funktionsnamnet har ingen betydelse. Det avgörande är [HttpGet].
         {
-            faceServiceClient = new FaceServiceClient("3455a13fefb347f6aebff7162aa7a005");
-            var requiredFaceAttributes = new FaceAttributeType[] {  // Varför finns vare sig id eller attributes medtagen som de gör i foreach (var face in faces)?
-                FaceAttributeType.Age,
-                FaceAttributeType.Gender,
-                FaceAttributeType.Smile,
-                FaceAttributeType.FacialHair,
-                FaceAttributeType.HeadPose,
-                FaceAttributeType.Glasses
-            };
-            string imageUrl = URL;
-            var faces = await faceServiceClient.DetectAsync(imageUrl,
-                returnFaceLandmarks: true,                      // Varför är det inte returnFaceLandmark = true?
-                returnFaceAttributes: requiredFaceAttributes);  // Returneras värdena från Microsoft api.projectoxford.com till instansen requiredFaceAttributes?
+            FaceServiceClient client = new FaceServiceClient("3455a13fefb347f6aebff7162aa7a005");
 
-            foreach (var face in faces)  // Är detta en tvådimensionell matris där varje rad är ett ansikte med id, attributes en array osv?
-            {
-                var id = face.FaceId;
-                var attributes = face.FaceAttributes;
-                var age = attributes.Age;
-                var gender = attributes.Gender;
-                var smile = attributes.Smile;
-                var facialHair = attributes.FacialHair;
-                var headPose = attributes.HeadPose;
-                var glasses = attributes.Glasses;
-            }
-            return faces;
+            var faces = await client.DetectAsync(URL, true, true);
+
+            var firstFace = faces[0];
+
+            int eyeLeftX = (int)firstFace.FaceLandmarks.EyeLeftInner.X;
+            int eyeLeftY = (int)firstFace.FaceLandmarks.EyeLeftInner.Y;
+
+            return $"{eyeLeftX},{eyeLeftY}";
         }
     }
 }
