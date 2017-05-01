@@ -13,14 +13,6 @@ var inputImgUrl = document.getElementById("imageUrl"); // Inmatningsfältet för
 var outputImg = document.getElementById("Picture"); // Jag vill komma åt fältet < img id = "Picture" src="" /> på Index.cshtml för att 'dynamiskt' fylla i src="" beroende på vad användaren skriver in i URL-inmatningsfältet.
 var getFaceDataButton = document.getElementById("faceUrl"); // När användaren trycker på [Get Face Data :-)] knappen med id = "faceUrl" ska funktionen med AJAX anropas.
 
-//callFace1.addEventListener("click", function () { outputImg.src = callFace1.name; var face1 = accessImgData(callFace1.name) });
-//callFace2.addEventListener("click", function () { outputImg.src = callFace2.name; var face2 = accessImgData(callFace2.name) });
-//callFace3.addEventListener("click", function () { outputImg.src = callFace3.name; var face3 = accessImgData(callFace3.name) });
-//callFace4.addEventListener("click", function () { outputImg.src = callFace4.name; var face4 = accessImgData(callFace4.name) });
-//callFace5.addEventListener("click", function () { outputImg.src = callFace5.name; var face5 = accessImgData(callFace5.name) });
-//callFace6.addEventListener("click", function () { outputImg.src = callFace6.name; var face6 = accessImgData(callFace6.name) });
-//callFace7.addEventListener("click", function () { outputImg.src = inputImgUrl.value; var face7 = accessImgData(inputImgUrl.value) });
-
 callFace1.addEventListener("click", function () { var face1 = accessImgData(callFace1.name) });
 callFace2.addEventListener("click", function () { var face2 = accessImgData(callFace2.name) });
 callFace3.addEventListener("click", function () { var face3 = accessImgData(callFace3.name) });
@@ -28,7 +20,6 @@ callFace4.addEventListener("click", function () { var face4 = accessImgData(call
 callFace5.addEventListener("click", function () { var face5 = accessImgData(callFace5.name) });
 callFace6.addEventListener("click", function () { var face6 = accessImgData(callFace6.name) });
 callFace7.addEventListener("click", function () { var face7 = accessImgData(inputImgUrl.value) });
-
 
 function accessImgData(callFace) {
     var c = document.getElementById("resultImage")
