@@ -32,6 +32,7 @@ function accessImgData(callFace) {
 
     };
 
+
     var xhr = new XMLHttpRequest();
     xhr.open('Get', '/api/FaceNewApi/?URL=' + callFace, true);
     xhr.setRequestHeader("Content-type", "application/json");
